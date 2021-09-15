@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: product-service
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        namespace: public
+        group: SEATA_GROUP
+    alibaba:
+      seata:
+        tx-service-group: ${spring.application.name}

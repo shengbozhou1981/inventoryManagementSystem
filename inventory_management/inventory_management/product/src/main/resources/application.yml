@@ -1,0 +1,33 @@
+
+server:
+  port: 8081
+#  ssl:
+#    key-store: classpath:keystore/mbonroute.p12
+#    key-store-type: PKCS12
+#    #    key-alias: tomcat
+#    key-store-password: roadside
+#    enabled: true
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.241.130/product_inventory_management?serverTimezone=EST
+    username: root
+    password: root
+  application:
+    name: product-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  redis:
+    host: redis://:192.168.241.130
+    port: 6379
+    password:
+rocketmq:
+  name-server: 192.168.241.130:9876
+  producer:
+    group: product
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: com/demo/mapper/xml/*.xml

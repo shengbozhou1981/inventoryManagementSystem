@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.OrderHeadMapper">
+
+    <select id="findOrderByIds" resultType="com.demo.entity.OrderHead">
+        select * from order_head where order_id in
+
+
+            <foreach collection="list" index="index" item="item" open="("
+                     separator="," close=")">
+                #{item}
+            </foreach>
+
+    </select>
+</mapper>

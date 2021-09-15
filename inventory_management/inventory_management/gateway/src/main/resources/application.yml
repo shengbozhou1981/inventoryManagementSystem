@@ -1,0 +1,33 @@
+server:
+  port: 8084
+  ssl:
+    key-store: classpath:keystore/mbonroute.p12
+    key-store-type: PKCS12
+    #    key-alias: tomcat
+    key-store-password: roadside
+    enabled: true
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      httpclient:
+        ssl:
+          useInsecureTrustManager: true
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origins:
+              - "http://localhost:8080"
+              - "http://localhost:8081"
+              - "http://localhost:8082"
+              - "http://localhost:8083"
+            allowed-headers: "*"
+            allowed-methods: "*"
+            max-age: 3600
+product-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.demo.configuration.NacosWeightedRule
