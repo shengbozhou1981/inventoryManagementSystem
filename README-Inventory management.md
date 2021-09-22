@@ -42,7 +42,7 @@
 
 2. Second need to start Nacus for the microservices registry and discovery
 
-   ![image-20210830093853099](D:\Study\学习资料\images\image-20210830093853099.png)
+   ![image-20210919002535833](D:\Study\学习资料\images\image-20210919002535833.png)
 
    ![image-20210827144624687](D:\Study\学习资料\images\image-20210827144624687.png)
 
