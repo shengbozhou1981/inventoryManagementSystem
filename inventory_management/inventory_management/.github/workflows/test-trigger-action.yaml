@@ -1,0 +1,19 @@
+name: Trigger GitHub Actions
+
+on:
+  workflow_dispatch:
+    inputs:
+      requestInfo:
+        description: 'Request information from frontend'
+        required: true
+
+jobs:
+  process_request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Parse Request Information
+        run: |
+          echo "Request Info: ${{ github.event.inputs.requestInfo }}"
