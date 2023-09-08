@@ -1,0 +1,43 @@
+- name: create pool AT101_INTERNAL_OSSO_SSL
+  bigip_pool:
+    provider: "{{ provider }}"
+    name: AT101_INTERNAL_OSSO_SSL
+    monitors:
+    - OpenSSO_SSL
+  delegate_to: localhost
+
+- name: create pool member 142.63.43.25:20445
+  bigip_pool_member:
+    provider: "{{ provider }}"
+    pool: AT101_INTERNAL_OSSO_SSL
+    host: 142.63.43.25
+    port: 20445
+    state: disabled
+  delegate_to: localhost
+
+- name: create pool member 142.63.43.26:20445
+  bigip_pool_member:
+    provider: "{{ provider }}"
+    pool: AT101_INTERNAL_OSSO_SSL
+    host: 142.63.43.26
+    port: 20445
+    state: disabled
+  delegate_to: localhost
+
+- name: create pool member 142.63.56.172:31445
+  bigip_pool_member:
+    provider: "{{ provider }}"
+    pool: AT101_INTERNAL_OSSO_SSL
+    host: 142.63.56.172
+    port: 31445
+    state: disabled
+  delegate_to: localhost
+
+- name: create pool member 142.63.56.173:31445
+  bigip_pool_member:
+    provider: "{{ provider }}"
+    pool: AT101_INTERNAL_OSSO_SSL
+    host: 142.63.56.173
+    port: 31445
+    state: disabled
+  delegate_to: localhost
