@@ -1,4 +1,4 @@
-- - name: create pool AAA_test_pool
+- name: create pool AAA_test_pool
   bigip_pool:
     provider: "{{ provider }}"
     name: AAA_test_pool
