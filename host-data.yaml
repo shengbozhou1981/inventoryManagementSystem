@@ -1,0 +1,26 @@
+ltm_pairs:
+
+# Marmac Internal
+- name: fn94004-fn94005
+  hosts: [fn94004.tmi.telus.com, fn94005.tmi.telus.com]
+  env: NP
+
+# Marmac Internal
+- name: flute-piccolo
+  hosts: [flute.tmi.telus.com, piccolo.tmi.telus.com]
+  env: PR
+
+# Laird1 Internal
+- name: fn94001-fn94002
+  hosts: [fn94001.corp.ads, fn94002.corp.ads]
+  env: NP
+
+# Laird1 Internal
+- name: fap0001-fap0002
+  hosts: [fap0001.corp.ads, fap0002.corp.ads]
+  env: PR
+
+# Laird2 Internal
+- name: fn94012-fn94013
+  hosts: [fn94012.corp.ads, fn94013.corp.ads]
+  env: NP
