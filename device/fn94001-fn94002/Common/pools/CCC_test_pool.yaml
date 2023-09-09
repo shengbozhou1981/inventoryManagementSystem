@@ -1,0 +1,28 @@
+- name: create pool CCC_test_pool
+  bigip_pool:
+    provider: "{{ provider }}"
+    name: AAA_test_pool
+    lb_method: Ratio
+    monitors: "    - tcp\n    - http\n    - https\n    - #"
+    state: present
+  delegate_to: localhost
+- name: create pool member 142.63.34.100:31186
+  bigip_pool_member:
+    provider: "{{ provider }}"
+    pool: AAA_test_pool
+    partition: Common
+    host: 142.63.34.100
+    port: 31186
+    state: disabled
+    ratio: 90
+  delegate_to: localhost
+- name: create pool member 142.63.34.99:31186
+  bigip_pool_member:
+    provider: "{{ provider }}"
+    pool: AAA_test_pool
+    host: 142.63.34.99
+    partition: Common
+    port: 31186
+    state: disabled
+    ratio: 80
+  delegate_to: localhost
