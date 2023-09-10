@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ISSUE_TITLE: ${{ github.event.issue.title }}
+      ISSUE_BODY: ${{ github.event.issue.body }}
+      REPO_NAME: ${{ github.repository }}
+      ISSUE_NUMBER: ${{ github.event.issue.number }} 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
