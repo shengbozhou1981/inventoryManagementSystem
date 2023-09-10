@@ -8,5 +8,7 @@ authorizedUsers:
 - email: DENNIS.TOMBOC@TELUS.COM
   name: Dennis
   tid: x118804
-- email: "shengbozhou@hotmail.com\r"
-  name: "T988366\r"
+- email: shengbozhou@telus.com
+  name: T88888
+- email: zhouzhou@telus.com
+  name: T99999
