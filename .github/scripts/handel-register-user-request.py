@@ -18,7 +18,8 @@ issue_body = issue.body
 user_info = re.findall(r'- username: (.*?)\n\s+email: (.*?)\n', issue_body, re.DOTALL)
 
 # 读取 authorizedUser.yaml 文件
-file_path = 'authorizedUser.yaml'
+file_path = f"/authorizedUsers.yaml"
+# file_path = 'authorizedUser.yaml'
 with open(file_path, 'r') as file:
     data = yaml.safe_load(file)
 
