@@ -1,0 +1,72 @@
+name: Modify Pool Definition
+on:
+  issues:
+    types:
+      - opened
+      - reopened
+env:
+  # Your Google Cloud Non-Prod Project
+  PROJECT_ID: cio-doe-tools-np-d00b17
+  
+  # Your Cloud Deploy pipeline name, as defined in clouddeploy.yaml metadata.name for kind:DeliveryPipeline
+  DELIVERY_PIPELINE_NAME: create-PR-for-registrating-user
+  
+  # The Google Cloud Region where you want to deploy; you likely don't have to change this
+  REGION: northamerica-northeast1
+jobs:
+  modify_pool:
+    name: Modify Pool Definition from issue submit
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'write'
+      pull-requests: 'write'
+      id-token: 'write'
+
+    steps:
+    # Check out your GitHub repo into the container executing these steps
+    - name: "Cloning repo"
+      uses: actions/checkout@v3
+
+    - name: "Setup Python"
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    # - name: Install dependencies
+    #   run: |
+    #     python -m pip install --upgrade pip
+    #     pip install PyGithub GitPython pyyaml ruamel.yaml
+          
+    - name: Run Python script
+      id: python_script
+      run: |
+        playbook_file_path=$(python .github/scripts/handel-register-user-request.py)
+        echo "::set-output name=playbook_path::$playbook_file_path"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ISSUE_TITLE: ${{ github.event.issue.title }}
+        ISSUE_BODY: ${{ github.event.issue.body }}
+        REPO_NAME: ${{ github.repository }}
+    - name: Print playbook_path value
+      run: |
+        playbook_path="${{ steps.python_script.outputs.playbook_path }}"
+        echo "playbook_path: $playbook_path"
+
+    - name: Create and Push New Branch
+      id: create_branch
+      run: |
+        playbook_path="${{ steps.python_script.outputs.playbook_path }}"
+        git config --global user.email "actions@github.com"
+        git config --global user.name "GitHub Actions"
+        git add "$playbook_path"
+        git commit -m "Add $playbook_path"
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        base: main
+        branch: "feature/${{ steps.python_script.outputs.playbook_path }}"
+        delete-branch: true
+        title: "Create Pull Request for ${{ steps.python_script.outputs.playbook_path }}"
+        body: "This is a pull request created by the workflow."
