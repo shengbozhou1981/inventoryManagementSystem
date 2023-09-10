@@ -16,6 +16,8 @@ issue_body = issue.body
 
 # 提取用户信息
 user_info = re.findall(r'- username: (.*?)\n\s+email: (.*?)\n', issue_body, re.DOTALL)
+# 去除每个字段中的 \r
+cleaned_user_info = [(username.replace('\r', ''), email.replace('\r', '')) for username, email in user_info]
 
 # 读取 authorizedUser.yaml 文件
 file_path = 'authorizedUsers.yaml'
@@ -27,7 +29,7 @@ with open(file_path, 'r') as file:
 if 'authorizedUsers' not in data:
     data['authorizedUsers'] = []
 
-for username, email in user_info:
+for username, email in cleaned_user_info:
     data['authorizedUsers'].append({'name': username, 'email': email})
 
 # 写回 authorizedUser.yaml 文件
