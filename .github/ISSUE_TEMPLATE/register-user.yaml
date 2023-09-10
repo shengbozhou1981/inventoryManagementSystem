@@ -25,5 +25,7 @@ body:
         ex.
         - username: T988365
           email: tony.zhou@telus.com
+          team: Load Balancer
+          manager: Rosie Nilvi
     validations:
       required: true
