@@ -39,4 +39,4 @@ with open(file_path, 'w') as file:
 # pr_body = f"This PR adds authorized user(s) from Issue #{issue_number}."
 # pr = repo.create_pull(title=pr_title, body=pr_body, base="master", head=f"pull-request-branch-{issue_number}")
 
-print(f"Pull Request created: {pr.html_url}")
+# print(f"Pull Request created: {pr.html_url}")
