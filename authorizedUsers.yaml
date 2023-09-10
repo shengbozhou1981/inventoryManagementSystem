@@ -1,13 +1,10 @@
 authorizedUsers:
 - email: tony.zhou@telus.com
-  name: Tony Zhou
-  tid: T988365
+  name: T988365
 - email: ANJ.LEONOR@TELUS.COM
-  name: Anj
-  tid: T859380
+  name: T859380
 - email: DENNIS.TOMBOC@TELUS.COM
-  name: Dennis
-  tid: x118804
+  name: x118804
 - email: tony.zhou@telus.com
   name: T988366
 - email: tony.zhou@telus.com
