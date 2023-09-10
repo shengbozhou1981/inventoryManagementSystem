@@ -40,7 +40,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          base: main
+          base: master
           branch: "feature/branch-issue-${{ github.event.issue.number }}"
           delete-branch: true
           title: "Create Pull Request for ${{ github.event.issue.number }}"
