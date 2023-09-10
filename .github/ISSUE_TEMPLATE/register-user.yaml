@@ -1,0 +1,29 @@
+---
+name: Register user request
+description: Template to add new authorized user to visit F5 Resource Update Platform.
+title: "Register user request"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        To add new authorized user to visit F5 Resource Update Platform, Fill in the required information pertaining to your update details, and then click "Submit".
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@telus.com
+    validations:
+      required: false
+  # Repeat the following block for each pool member
+  - type: textarea
+    id: customer_info
+    attributes:
+      label: Customer Info
+      description: Enter the required information of the customer, if multiple customers, repeat the username, password settings.
+      value: |
+        ex.
+        - username: T988365
+          email: tony.zhou@telus.com
+    validations:
+      required: true
